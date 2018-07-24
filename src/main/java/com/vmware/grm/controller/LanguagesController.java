@@ -20,7 +20,7 @@ import java.util.Map;
  * Date:7/10/2018
  * Time:2:31 PM
  **/
-@Api(value = "语言管理",tags = {"语言管理"},description = "描述信息")
+@Api(value = "languages manage",tags = {"languages manage"},description = "")
 @RestController
 @RequestMapping("/api/languages")
 public class LanguagesController {
@@ -28,7 +28,7 @@ public class LanguagesController {
     @Resource
     private LanguagesService languagesService;
 
-    @ApiOperation(value = "列出所有语言",notes = "",produces = "application/json")
+    @ApiOperation(value = "list languages",notes = "",produces = "application/json")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public LanguagesDto listLanguages(@RequestParam(value = "limit",required = false,defaultValue = "15")Integer limit,@RequestParam(value = "offset",required = false,defaultValue = "0")Integer offset,@RequestParam(value = "name",required = false)String name,@RequestParam(value = "code",required = false)String code){
         List<Languages> results = languagesService.listLanguages(limit, offset,name ,code);

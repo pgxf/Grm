@@ -16,7 +16,7 @@ import java.util.List;
  * Date:7/19/2018
  * Time:4:47 PM
  **/
-@Api(value = "发布描述管理",tags = {"发布描述管理"},description = "描述信息")
+@Api(value = "releaseprofiles manage",tags = {"releaseprofiles manage"},description = "")
 @RestController
 @RequestMapping("/api/releaseprofiles")
 public class ReleaseprofilesController {
@@ -24,7 +24,7 @@ public class ReleaseprofilesController {
     @Resource
     private ReleaseprofilesService releaseprofilesService;
 
-    @ApiOperation(value = "列出所有发布描述",notes = "",produces = "application/json")
+    @ApiOperation(value = "list releaseprofiles",notes = "",produces = "application/json")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public Object listReleaseprofiles(@RequestParam(value = "limit",required = false,defaultValue = "15")Integer limit, @RequestParam(value = "offset",required = false,defaultValue = "0")Integer offset, @RequestParam(value = "name",required = false)String name){
         List<Releaseprofiles> releaseprofiles = releaseprofilesService.listReleaseprofiles(limit,offset,name);

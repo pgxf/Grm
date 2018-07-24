@@ -19,7 +19,7 @@ import java.util.List;
  * Date:7/13/2018
  * Time:10:21 AM
  **/
-@Api(value = "产品管理",tags = {"产品管理"},description = "描述信息")
+@Api(value = "product manage",tags = {"product manage"},description = "")
 @RestController
 @RequestMapping("/api/products")
 public class ProductsController {
@@ -27,7 +27,7 @@ public class ProductsController {
     @Resource
     private ProductsService productsService;
 
-    @ApiOperation(value = "列出所有产品",notes = "",produces = "application/json")
+    @ApiOperation(value = "list manage",notes = "",produces = "application/json")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public Object listProducts(@RequestParam(value = "limit",required = false,defaultValue = "15")Integer limit, @RequestParam(value = "offset",required = false,defaultValue = "0")Integer offset, @RequestParam(value = "name",required = false)String name){
         List<Products> results = productsService.listProducts(limit, offset,name);
@@ -56,8 +56,8 @@ public class ProductsController {
         Products products = productsService.getProduct(id);
         if(products==null) return new Detail("Not found.");
         product.setId(products.getId());
-        //检查code_freeze_date和release_date的格式
-        //检查supported_languages不为空
+        //check code_freeze_date&release_date
+        //check supported_languages not null
         return products.getName().equals(product.getName())?productsService.updateProduct(product):new Detail("Not found.");
     }
 
@@ -66,8 +66,8 @@ public class ProductsController {
         Products products = productsService.getProduct(id);
         if(products==null) return new Detail("Not found.");
         product.setId(products.getId());
-        //检查code_freeze_date和release_date的格式
-        //检查supported_languages不为空
+        //check code_freeze_date&release_date
+        //check supported_languages not null
         return product.getName()==null||products.getName().equals(product.getName())?productsService.updateProduct(product):new Detail("Not found.");
     }
 

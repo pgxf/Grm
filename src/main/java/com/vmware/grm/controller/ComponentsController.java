@@ -18,7 +18,7 @@ import java.util.List;
  * Date:7/18/2018
  * Time:10:25 AM
  **/
-@Api(value = "成份管理",tags = {"成份管理"},description = "描述信息")
+@Api(value = "components manage",tags = {"components manage"},description = "")
 @RestController
 @RequestMapping("/api/components")
 public class ComponentsController {
@@ -29,7 +29,7 @@ public class ComponentsController {
     @Resource
     private ProductsService productsService;
 
-    @ApiOperation(value = "列出所有成分信息",notes = "",produces = "application/json")
+    @ApiOperation(value = "list components",notes = "",produces = "application/json")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public Object listComponents(@RequestParam(value = "limit",required = false,defaultValue = "15")Integer limit, @RequestParam(value = "offset",required = false,defaultValue = "0")Integer offset, @RequestParam(value = "product__id",required = false)String product_id, @RequestParam(value = "search",required = false)String search){
         List<Components> results = componentsService.listComponents(limit,offset);
