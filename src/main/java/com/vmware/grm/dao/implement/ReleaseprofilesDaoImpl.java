@@ -35,8 +35,8 @@ public class ReleaseprofilesDaoImpl implements ReleaseprofilesDao {
                 releaseprofile.setName(resultSet.getString("name"));
                 releaseprofile.setDescription(resultSet.getString("description"));
                 releaseprofile.setTms_configuration_id(resultSet.getString("tms_configuration_id"));
-                releaseprofile.setModified(resultSet.getString("modified"));
-                releaseprofile.setCreated(resultSet.getString("created"));
+                releaseprofile.setModified(resultSet.getTimestamp("modified"));
+                releaseprofile.setCreated(resultSet.getTimestamp("created"));
                 releaseprofile.setProduct(resultSet.getString("product_id"));
                 releaseprofile.setLanguage_id(resultSet.getString("language_id"));
                 return releaseprofile;
@@ -104,8 +104,8 @@ public class ReleaseprofilesDaoImpl implements ReleaseprofilesDao {
                 releaseprofile.setName(resultSet.getString("name"));
                 releaseprofile.setDescription(resultSet.getString("description"));
                 releaseprofile.setTms_configuration_id(resultSet.getString("tms_configuration_id"));
-                releaseprofile.setModified(resultSet.getString("modified"));
-                releaseprofile.setCreated(resultSet.getString("created"));
+                releaseprofile.setModified(resultSet.getTimestamp("modified"));
+                releaseprofile.setCreated(resultSet.getTimestamp("created"));
                 releaseprofile.setProduct(resultSet.getString("product_id"));
                 releaseprofile.setLanguage_id(resultSet.getString("language_id"));
                 return releaseprofile;
@@ -124,8 +124,8 @@ public class ReleaseprofilesDaoImpl implements ReleaseprofilesDao {
                 releaseprofile.setName(resultSet.getString("name"));
                 releaseprofile.setDescription(resultSet.getString("description"));
                 releaseprofile.setTms_configuration_id(resultSet.getString("tms_configuration_id"));
-                releaseprofile.setModified(resultSet.getString("modified"));
-                releaseprofile.setCreated(resultSet.getString("created"));
+                releaseprofile.setModified(resultSet.getTimestamp("modified"));
+                releaseprofile.setCreated(resultSet.getTimestamp("created"));
                 releaseprofile.setProduct(resultSet.getString("product_id"));
                 releaseprofile.setLanguage_id(resultSet.getString("language_id"));
                 return releaseprofile;
@@ -164,7 +164,7 @@ public class ReleaseprofilesDaoImpl implements ReleaseprofilesDao {
     @Override
     public int insertReleaseprofiles(Releaseprofiles releaseprofile) {
         String sql = "insert into releaseprofiles_releaseprofile(id,name,description,tms_configuration_id,modified,created,product_id,language_id) values(?,?,?,?,?,?,?,?)";
-        int update = jdbcTemplate.update(sql, new Object[]{UUID.fromString(releaseprofile.getId()), releaseprofile.getName(),releaseprofile.getDescription(), releaseprofile.getTms_configuration_id(), Timestamp.valueOf(releaseprofile.getModified()), Timestamp.valueOf(releaseprofile.getCreated()), UUID.fromString(releaseprofile.getProduct()), UUID.fromString(releaseprofile.getLanguage_id())});
+        int update = jdbcTemplate.update(sql, new Object[]{UUID.fromString(releaseprofile.getId()), releaseprofile.getName(),releaseprofile.getDescription(), releaseprofile.getTms_configuration_id(), releaseprofile.getModified(), releaseprofile.getCreated(), UUID.fromString(releaseprofile.getProduct()), UUID.fromString(releaseprofile.getLanguage_id())});
         return update;
     }
 

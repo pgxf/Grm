@@ -150,8 +150,8 @@ public class ReleaseprofilesServiceImpl implements ReleaseprofilesService {
             return "language_id error";
         }
 
-        releaseprofile.setModified(new Timestamp(System.currentTimeMillis()).toString());
-        releaseprofile.setCreated(new Timestamp(System.currentTimeMillis()).toString());
+        releaseprofile.setModified(new Timestamp(System.currentTimeMillis()));
+        releaseprofile.setCreated(new Timestamp(System.currentTimeMillis()));
 
         int update = releaseprofilesDao.insertReleaseprofiles(releaseprofile);
         if (update==1) return getReleaseprofile(releaseprofile.getId());
@@ -162,7 +162,7 @@ public class ReleaseprofilesServiceImpl implements ReleaseprofilesService {
     @Override
     public Object updateReleaseprofile(Releaseprofiles releaseprofile) {
         deleteReleaseprofile(releaseprofile.getId());
-        releaseprofile.setModified(new Timestamp(System.currentTimeMillis()).toString());
+        releaseprofile.setModified(new Timestamp(System.currentTimeMillis()));
         Object o = insertReleaseprofile(releaseprofile);
         return o;
     }

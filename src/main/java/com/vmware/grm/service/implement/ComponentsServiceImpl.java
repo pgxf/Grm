@@ -52,8 +52,8 @@ public class ComponentsServiceImpl implements ComponentsService {
     @Override
     public Components insertLanguage(Components components) {
         components.setId(UUID.randomUUID().toString());
-        components.setModified(new Timestamp(System.currentTimeMillis()).toString());
-        components.setCreated(new Timestamp(System.currentTimeMillis()).toString());
+        components.setModified(new Timestamp(System.currentTimeMillis()));
+        components.setCreated(new Timestamp(System.currentTimeMillis()));
         int update = 0;
         try {
             update = componentsDao.insertComponent(components);

@@ -1,5 +1,6 @@
 package com.vmware.grm.model;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +16,14 @@ public class Products {
     String release_date;
     String version;
     String code_freeze_date;
-    String modified;
-    String created;
+    Timestamp modified;
+    Timestamp created;
     List<String> supported_languages;
 
     public Products() {
     }
 
-    public Products(String id, String name, String release_date, String version, String code_freeze_date, String modified, String created, List<String> supported_languages) {
+    public Products(String id, String name, String release_date, String version, String code_freeze_date, Timestamp modified, Timestamp created, List<String> supported_languages) {
         this.id = id;
         this.name = name;
         this.release_date = release_date;
@@ -53,11 +54,11 @@ public class Products {
         return code_freeze_date;
     }
 
-    public String getModified() {
+    public Timestamp getModified() {
         return modified;
     }
 
-    public String getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
@@ -85,11 +86,11 @@ public class Products {
         this.code_freeze_date = code_freeze_date;
     }
 
-    public void setModified(String modified) {
+    public void setModified(Timestamp modified) {
         this.modified = modified;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 

@@ -2,6 +2,8 @@ package com.vmware.grm.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.sql.Timestamp;
+
 /**
  * Author:fxing@vmware.com
  * Date:7/18/2018
@@ -15,13 +17,13 @@ public class Components {
     private String l10n_definition_file;
     private String scm_path;
     private String l10n_mode;
-    private String modified;
-    private String created;
+    private Timestamp modified;
+    private Timestamp created;
 
     private String product_id;
     private String status;
 
-    public Components(String id, String name, String branch_name, String l10n_definition_file, String scm_path, String l10n_mode, String modified, String created, String product_id, String status) {
+    public Components(String id, String name, String branch_name, String l10n_definition_file, String scm_path, String l10n_mode, Timestamp modified, Timestamp created, String product_id, String status) {
         this.id = id;
         this.name = name;
         this.branch_name = branch_name;
@@ -61,11 +63,11 @@ public class Components {
         return l10n_mode;
     }
 
-    public String getModified() {
+    public Timestamp getModified() {
         return modified;
     }
 
-    public String getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
@@ -101,11 +103,11 @@ public class Components {
         this.l10n_mode = l10n_mode;
     }
 
-    public void setModified(String modified) {
+    public void setModified(Timestamp modified) {
         this.modified = modified;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 

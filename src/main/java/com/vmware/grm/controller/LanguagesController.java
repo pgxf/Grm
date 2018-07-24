@@ -6,6 +6,8 @@ import com.vmware.grm.dto.LanguagesDto;
 import com.vmware.grm.model.Languages;
 import com.vmware.grm.service.LanguagesService;
 import com.vmware.grm.service.implement.LanguagesServiceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,7 @@ import java.util.Map;
  * Date:7/10/2018
  * Time:2:31 PM
  **/
-
+@Api(value = "语言管理",tags = {"语言管理"},description = "描述信息")
 @RestController
 @RequestMapping("/api/languages")
 public class LanguagesController {
@@ -26,6 +28,7 @@ public class LanguagesController {
     @Resource
     private LanguagesService languagesService;
 
+    @ApiOperation(value = "列出所有语言",notes = "",produces = "application/json")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public LanguagesDto listLanguages(@RequestParam(value = "limit",required = false,defaultValue = "15")Integer limit,@RequestParam(value = "offset",required = false,defaultValue = "0")Integer offset,@RequestParam(value = "name",required = false)String name,@RequestParam(value = "code",required = false)String code){
         List<Languages> results = languagesService.listLanguages(limit, offset,name ,code);

@@ -3,6 +3,7 @@ package com.vmware.grm.dto;
 import com.vmware.grm.model.Components;
 import com.vmware.grm.model.Products;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -22,12 +23,12 @@ public class ComponentsLanguages {
     private String scm_path;
     private String l10n_mode;
     private String status;
-    private String modified;
-    private String created;
+    private Timestamp modified;
+    private Timestamp created;
 
 
 
-    public ComponentsLanguages(String id, String name, String branch_name, String l10n_definition_file, String scm_path, String l10n_mode, String modified, String created, List<String> languageName, String status) {
+    public ComponentsLanguages(String id, String name, String branch_name, String l10n_definition_file, String scm_path, String l10n_mode, Timestamp modified, Timestamp created, List<String> languageName, String status) {
         this.id = id;
         this.name = name;
         this.branch_name = branch_name;
@@ -91,19 +92,19 @@ public class ComponentsLanguages {
         this.l10n_mode = l10n_mode;
     }
 
-    public String getModified() {
+    public Timestamp getModified() {
         return modified;
     }
 
-    public void setModified(String modified) {
+    public void setModified(Timestamp modified) {
         this.modified = modified;
     }
 
-    public String getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 

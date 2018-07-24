@@ -7,6 +7,8 @@ import com.vmware.grm.model.Languages;
 import com.vmware.grm.model.Products;
 import com.vmware.grm.model.Test;
 import com.vmware.grm.service.ProductsService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -17,7 +19,7 @@ import java.util.List;
  * Date:7/13/2018
  * Time:10:21 AM
  **/
-
+@Api(value = "产品管理",tags = {"产品管理"},description = "描述信息")
 @RestController
 @RequestMapping("/api/products")
 public class ProductsController {
@@ -25,6 +27,7 @@ public class ProductsController {
     @Resource
     private ProductsService productsService;
 
+    @ApiOperation(value = "列出所有产品",notes = "",produces = "application/json")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public Object listProducts(@RequestParam(value = "limit",required = false,defaultValue = "15")Integer limit, @RequestParam(value = "offset",required = false,defaultValue = "0")Integer offset, @RequestParam(value = "name",required = false)String name){
         List<Products> results = productsService.listProducts(limit, offset,name);

@@ -109,7 +109,7 @@ public class GrmApplicationTests {
 
 	@Test
 	public void insertProduct(){
-		Products products = new Products(UUID.randomUUID().toString(),"qqqqqq",null,null,null,new Timestamp(System.currentTimeMillis()).toString(),new Timestamp(System.currentTimeMillis()).toString(),null);
+		Products products = new Products(UUID.randomUUID().toString(),"qqqqqq",null,null,null,new Timestamp(System.currentTimeMillis()),new Timestamp(System.currentTimeMillis()),null);
 		int i = productsDao.insertProduct(products);
 		System.out.println(i);
 	}

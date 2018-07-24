@@ -1,5 +1,6 @@
 package com.vmware.grm.model;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -15,15 +16,15 @@ public class Releaseprofiles {
     String name;
     String description;
     String tms_configuration_id;
-    String modified;
-    String created;
+    Timestamp modified;
+    Timestamp created;
     String product;
     List<String> i18n_quality_engineers;
     List<String> i18n_engineers;
     List<String> l10n_project_managers;
     String language_id;
 
-    public Releaseprofiles(String id, String source_language_name, List<String> target_languages_codes, String name, String description, String tms_configuration_id, String modified, String created, String product, List<String> i18n_quality_engineers, List<String> i18n_engineers, List<String> l10n_project_managers, String language_id) {
+    public Releaseprofiles(String id, String source_language_name, List<String> target_languages_codes, String name, String description, String tms_configuration_id, Timestamp modified, Timestamp created, String product, List<String> i18n_quality_engineers, List<String> i18n_engineers, List<String> l10n_project_managers, String language_id) {
         this.id = id;
         this.source_language_name = source_language_name;
         this.target_languages_codes = target_languages_codes;
@@ -98,19 +99,19 @@ public class Releaseprofiles {
         this.tms_configuration_id = tms_configuration_id;
     }
 
-    public String getModified() {
+    public Timestamp getModified() {
         return modified;
     }
 
-    public void setModified(String modified) {
+    public void setModified(Timestamp modified) {
         this.modified = modified;
     }
 
-    public String getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 

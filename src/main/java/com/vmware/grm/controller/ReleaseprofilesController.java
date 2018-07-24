@@ -4,6 +4,8 @@ import com.vmware.grm.dto.Detail;
 import com.vmware.grm.dto.ReleaseprofilesDto;
 import com.vmware.grm.model.Releaseprofiles;
 import com.vmware.grm.service.ReleaseprofilesService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -14,6 +16,7 @@ import java.util.List;
  * Date:7/19/2018
  * Time:4:47 PM
  **/
+@Api(value = "发布描述管理",tags = {"发布描述管理"},description = "描述信息")
 @RestController
 @RequestMapping("/api/releaseprofiles")
 public class ReleaseprofilesController {
@@ -21,6 +24,7 @@ public class ReleaseprofilesController {
     @Resource
     private ReleaseprofilesService releaseprofilesService;
 
+    @ApiOperation(value = "列出所有发布描述",notes = "",produces = "application/json")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public Object listReleaseprofiles(@RequestParam(value = "limit",required = false,defaultValue = "15")Integer limit, @RequestParam(value = "offset",required = false,defaultValue = "0")Integer offset, @RequestParam(value = "name",required = false)String name){
         List<Releaseprofiles> releaseprofiles = releaseprofilesService.listReleaseprofiles(limit,offset,name);

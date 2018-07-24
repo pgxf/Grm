@@ -44,8 +44,8 @@ public class ProductsDaoImpl implements ProductsDao {
                 products.setRelease_date(resultSet.getString("release_date"));
                 products.setVersion(resultSet.getString("version"));
                 products.setCode_freeze_date(resultSet.getString("code_freeze_date"));
-                products.setModified(resultSet.getString("modified"));
-                products.setCreated(resultSet.getString("created"));
+                products.setModified(resultSet.getTimestamp("modified"));
+                products.setCreated(resultSet.getTimestamp("created"));
                 products.setSupported_languagesItem(resultSet.getString("language_id"));
                 return products;
             }
@@ -64,8 +64,8 @@ public class ProductsDaoImpl implements ProductsDao {
                 products.setRelease_date(resultSet.getString("release_date"));
                 products.setVersion(resultSet.getString("version"));
                 products.setCode_freeze_date(resultSet.getString("code_freeze_date"));
-                products.setModified(resultSet.getString("modified"));
-                products.setCreated(resultSet.getString("created"));
+                products.setModified(resultSet.getTimestamp("modified"));
+                products.setCreated(resultSet.getTimestamp("created"));
                 return products;
             }
         });
@@ -83,8 +83,8 @@ public class ProductsDaoImpl implements ProductsDao {
                 products.setRelease_date(resultSet.getString("release_date"));
                 products.setVersion(resultSet.getString("version"));
                 products.setCode_freeze_date(resultSet.getString("code_freeze_date"));
-                products.setModified(resultSet.getString("modified"));
-                products.setCreated(resultSet.getString("created"));
+                products.setModified(resultSet.getTimestamp("modified"));
+                products.setCreated(resultSet.getTimestamp("created"));
                 return products;
             }
         });
@@ -102,8 +102,8 @@ public class ProductsDaoImpl implements ProductsDao {
                 products.setRelease_date(resultSet.getString("release_date"));
                 products.setVersion(resultSet.getString("version"));
                 products.setCode_freeze_date(resultSet.getString("code_freeze_date"));
-                products.setModified(resultSet.getString("modified"));
-                products.setCreated(resultSet.getString("created"));
+                products.setModified(resultSet.getTimestamp("modified"));
+                products.setCreated(resultSet.getTimestamp("created"));
                 return products;
             }
         });
@@ -121,7 +121,7 @@ public class ProductsDaoImpl implements ProductsDao {
         String sql = "update products_product set release_date = ? , version = ? , code_freeze_date = ? , modified = ? where id = ?";
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         int update = jdbcTemplate.update(sql , new Object[]{product.getRelease_date(),product.getVersion(),product.getCode_freeze_date(),timestamp,UUID.fromString(product.getId())});
-        product.setModified(timestamp.toString());
+        product.setModified(timestamp);
         try {
             Products productById = getProductById(product.getId());
             product.setCreated(productById.getCreated());

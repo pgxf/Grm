@@ -5,6 +5,8 @@ import com.vmware.grm.model.Components;
 import com.vmware.grm.model.Products;
 import com.vmware.grm.service.ComponentsService;
 import com.vmware.grm.service.ProductsService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,7 +18,7 @@ import java.util.List;
  * Date:7/18/2018
  * Time:10:25 AM
  **/
-
+@Api(value = "成份管理",tags = {"成份管理"},description = "描述信息")
 @RestController
 @RequestMapping("/api/components")
 public class ComponentsController {
@@ -27,6 +29,7 @@ public class ComponentsController {
     @Resource
     private ProductsService productsService;
 
+    @ApiOperation(value = "列出所有成分信息",notes = "",produces = "application/json")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public Object listComponents(@RequestParam(value = "limit",required = false,defaultValue = "15")Integer limit, @RequestParam(value = "offset",required = false,defaultValue = "0")Integer offset, @RequestParam(value = "product__id",required = false)String product_id, @RequestParam(value = "search",required = false)String search){
         List<Components> results = componentsService.listComponents(limit,offset);
@@ -47,7 +50,7 @@ public class ComponentsController {
             }
             return new String("{\"product__id\": [\"Enter a valid UUID.\"]}");
         }
-        //search功能没写
+        //not write search function
         if(product_id==null&&search!=null){
 
         }
@@ -62,7 +65,7 @@ public class ComponentsController {
     public Object getComponent(@PathVariable("id")String id, @RequestParam(value = "product__id",required = false) String product_id, @RequestParam(value = "search",required = false)String search){
         Components components = componentsService.getComponents(id);
         System.out.println(components);
-        //没加search判断
+        //not add search judge
         if(components==null) return new Detail("Not found");
         if(product_id==null||product_id.equals(components.getProduct_id())) return new ComponentsLanguages(components,componentsService.listLanguageNamesById(components.getProduct_id()),productsService.getProduct(components.getProduct_id()));
         else return new String("{\"product__id\":[\"Enter a valid UUID.\"]}");
@@ -90,7 +93,7 @@ public class ComponentsController {
         components.setScm_path(components.getScm_path()==null?component.getScm_path():components.getScm_path());
         components.setL10n_mode(components.getL10n_mode()==null?component.getL10n_mode():components.getL10n_mode());
         components.setStatus(components.getStatus()==null?component.getStatus():components.getStatus());
-        //没加search
+        //not add search
         int update = componentsService.updateComponent(components);
         if(update==1){
             component = componentsService.getComponents(id);
@@ -112,7 +115,7 @@ public class ComponentsController {
         components.setProduct_id(components.getProduct_id()==null?component.getProduct_id():components.getProduct_id());
         Products product = productsService.getProduct(components.getProduct_id());
         if(product==null) return new String("{\"Product\": [\"Enter a valid UUID.\"]}");
-        //没加search
+        //not add search
         int update = componentsService.updateComponent(components);
         if(update==1){
             component = componentsService.getComponents(id);
